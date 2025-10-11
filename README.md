@@ -13,14 +13,14 @@
 ```python
 import os
 
-    def clear(self):
-        # 确保数据库文件所在的目录存在
-        if not os.path.exists(os.path.dirname(self.export_location)):
-            os.makedirs(os.path.dirname(self.export_location))
+def clear(self):
+    # 确保数据库文件所在的目录存在
+    if not os.path.exists(os.path.dirname(self.export_location)):
+        os.makedirs(os.path.dirname(self.export_location))
 # 上两位代码为新增
-        super().clear()
-        db = sqlite3.connect(self.export_location)
-        # 后面代码省略...
+    super().clear()
+    db = sqlite3.connect(self.export_location)
+    # 后面代码省略...
 ```
 
 数据生成在export文件夹，利用Navicat查询导出
@@ -36,13 +36,13 @@ SELECT * FROM "man"."stations" WHERE province='山西省';
 
 2. xlsx导出为csv后转换编码GB2312为UTF\-8（注意车站生僻字）、简化字符串格式（Type和TrainList）
 
-   > 参考[convert&simplify.py]()
+   > 参考[convert&simplify.py](https://github.com/Wu-Jackie/Shanxi-Railway-Stations-Graph-WIth-Neo4J/blob/main/convert%26simplify.py)
 
 3. 以小部分车次数据为例，此时需标记需要的车次并清洗无关数据得到Stations.csv
 
-   > 参考[mark.py]()
+   > 参考[mark.py](https://github.com/Wu-Jackie/Shanxi-Railway-Stations-Graph-WIth-Neo4J/blob/main/mark.py)
    >
-   > 保留的车次详见[Create relationship.md]()目录
+   > 保留的车次详见[Create relationship.md](https://github.com/Wu-Jackie/Shanxi-Railway-Stations-Graph-WIth-Neo4J/blob/main/Create%20relationship.md)目录
 
 Stations.csv放在Neo4J安装目录的import文件夹
 
@@ -130,7 +130,7 @@ MATCH (s1:Station {Name: '南山交'}), (s2:Station {Name: '东阳关'})
 CREATE (s1)-[:`6043`]->(s2)
 ```
 
-详细在[Create relationship.md]()中
+详细在[Create relationship.md](https://github.com/Wu-Jackie/Shanxi-Railway-Stations-Graph-WIth-Neo4J/blob/main/Create%20relationship.md)中
 
 ### 删除关系
 
